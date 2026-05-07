@@ -1,0 +1,459 @@
+<!DOCTYPE html>  <html lang="bn">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>সত্যের পথে মহাযাত্রা | MC Pro</title>  
+
+<script async src="https://plausible.io/js/pa-35kXKD4J90f37sGi9nCsI.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;500;700&display=swap" rel="stylesheet">  <style>  
+/* --- Global Styles --- */  
+body {  
+  margin: 0;  
+  font-family: 'Hind Siliguri', sans-serif;  
+  background: #f0f2f5;  
+  color: #333;  
+}  
+  
+/* --- Header with Animation --- */  
+.header {  
+  text-align: center;  
+  padding: 25px 10px;  
+  background: linear-gradient(135deg, #FF6600, #ff9100);  
+  color: white;  
+  font-size: 32px;  
+  font-weight: 700;  
+  box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);  
+  letter-spacing: 1px;  
+}  
+  
+/* --- Profile Links --- */  
+.links {  
+  text-align: center;  
+  margin: 20px 0;  
+}  
+.links a {  
+  display: inline-flex;  
+  align-items: center;  
+  margin: 5px;  
+  padding: 8px 15px; /* Links slightly smaller/compact */
+  text-decoration: none;  
+  color: white;  
+  border-radius: 50px;  
+  font-size: 14px; /* Font size adjusted */
+  font-weight: 500;  
+  transition: transform 0.2s, box-shadow 0.2s;  
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);  
+}  
+.links a:hover { transform: translateY(-3px); box-shadow: 0 5px 12px rgba(0,0,0,0.2); }  
+.links a.whatsapp { background: linear-gradient(45deg, #25D366, #128C7E); }  
+.links a.facebook { background: linear-gradient(45deg, #1877f2, #0d47a1); }  
+.links a.instagram { background: linear-gradient(45deg, #833AB4, #FD1D1D, #FCAF45); }  
+  
+/* --- Brain Icon (Floating) --- */  
+.brain-icon {  
+  position: fixed;  
+  bottom: 30px;  
+  right: 30px;  
+  width: 70px;  
+  height: 70px;  
+  cursor: pointer;  
+  z-index: 1000;  
+  border-radius: 50%;  
+  background: white;  
+  border: 3px solid #FF6600;  
+  box-shadow: 0 0 20px rgba(255, 102, 0, 0.5);  
+  transition: transform 0.3s;  
+  animation: float 3s ease-in-out infinite;  
+}  
+.brain-icon:hover { transform: scale(1.1); }  
+.brain-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }  
+  
+@keyframes float {  
+  0% { transform: translateY(0px); }  
+  50% { transform: translateY(-10px); }  
+  100% { transform: translateY(0px); }  
+}  
+  
+/* --- Chat Modal (Modern UI) --- */  
+.modal {  
+  display: none;  
+  position: fixed;  
+  z-index: 9999;  
+  left: 0; top: 0;  
+  width: 100%; height: 100%;  
+  background-color: rgba(0,0,0,0.6);  
+  backdrop-filter: blur(5px);  
+}  
+  
+.chat-container {  
+  background-color: #fff;  
+  width: 95%;         /* Wider width */
+  max-width: 500px;   /* Increased max-width */
+  height: 90%;        /* Increased height */
+  margin: 5vh auto;   
+  border-radius: 20px;  
+  display: flex;  
+  flex-direction: column;  
+  overflow: hidden;  
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);  
+  animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);  
+}  
+  
+@keyframes slideUp {  
+  from { transform: translateY(100px); opacity: 0; }  
+  to { transform: translateY(0); opacity: 1; }  
+}  
+  
+.chat-header {  
+  padding: 15px;  
+  background: linear-gradient(90deg, #FF6600, #FF8E00);  
+  color: white;  
+  font-weight: bold;  
+  font-size: 18px;  
+  display: flex;  
+  justify-content: space-between;  
+  align-items: center;  
+}  
+.close-btn { cursor: pointer; font-size: 24px; transition: color 0.2s; }  
+.close-btn:hover { color: #ffe0b2; }  
+  
+.mode-switch {  
+  display: flex;  
+  justify-content: space-around;  
+  padding: 10px;  
+  background: #f7f7f7;  
+  border-bottom: 1px solid #eee;  
+}  
+.mode-switch button {  
+  flex: 1;  
+  margin: 0 5px;  
+  padding: 8px;  
+  border: none;  
+  border-radius: 12px;  
+  cursor: pointer;  
+  font-weight: 600;  
+  font-family: inherit;  
+  transition: 0.3s;  
+}  
+.local-btn { background: #e0f2f1; color: #00695c; }  
+.local-btn.active { background: #009688; color: white; }  
+.powerful-btn { background: #e3f2fd; color: #1565c0; }  
+.powerful-btn.active { background: #2196F3; color: white; }  
+  
+.chat-body {  
+  flex: 1;  
+  padding: 15px;  
+  overflow-y: auto;  
+  display: flex;  
+  flex-direction: column;  
+  background: #fff;  
+  scroll-behavior: smooth;  
+}  
+  
+/* Chat Bubbles */  
+.message {  
+  margin: 8px 0;  
+  padding: 10px 16px;  
+  border-radius: 18px;  
+  max-width: 80%;  
+  font-size: 15px;  
+  line-height: 1.4;  
+  word-wrap: break-word;  
+  animation: popIn 0.3s ease;  
+}  
+@keyframes popIn {  
+  from { opacity: 0; transform: scale(0.8); }  
+  to { opacity: 1; transform: scale(1); }  
+}  
+  
+.user-msg {   
+  align-self: flex-end;   
+  background: linear-gradient(135deg, #FF6600, #ff9100);   
+  color: white;   
+  border-bottom-right-radius: 4px;  
+}  
+.ai-msg {   
+  align-self: flex-start;   
+  background: #f1f0f0;   
+  color: #333;   
+  border-bottom-left-radius: 4px;  
+}  
+.ai-msg.typing {  
+  font-style: italic;  
+  color: #888;  
+  background: transparent;  
+  padding: 5px;  
+}  
+  
+.chat-footer {  
+  display: flex;  
+  padding: 15px;  
+  background: #f9f9f9;  
+  border-top: 1px solid #eee;  
+}  
+.chat-footer input {  
+  flex: 1;  
+  padding: 12px 15px;  
+  border-radius: 25px;  
+  border: 1px solid #ddd;  
+  outline: none;  
+  font-family: inherit;  
+  font-size: 15px;  
+  transition: border 0.3s;  
+}  
+.chat-footer input:focus { border-color: #FF6600; }  
+.chat-footer button {  
+  margin-left: 10px;  
+  width: 45px;  
+  height: 45px;  
+  background: #FF6600;  
+  border: none;  
+  border-radius: 50%;  
+  color: white;  
+  cursor: pointer;  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  transition: transform 0.2s;  
+}  
+.chat-footer button:hover { transform: scale(1.1); background: #e65c00; }  
+  
+/* Iframe */  
+iframe { width: 100%; height: 100%; border: none; }  
+  
+</style>  </head>  <body>  <div class="header">সত্যের পথে মহাযাত্রা</div>  <div class="links">  
+  <a class="whatsapp" href="https://wa.me/8801864901251" target="_blank">💬 WhatsApp</a>  
+  <a class="facebook" href="https://www.facebook.com/profile.php?id=61579207851282" target="_blank">👍 Facebook</a>  
+  <a class="instagram" href="https://www.instagram.com/sotterpothemohajatra?igsh=MTE0bnZmMWQ3bWJiYg==" target="_blank">📷 Instagram</a>  
+</div>  <div style="display: flex; justify-content: center; margin-top: 20px;">  
+  
+  <div class="fb-page"  
+       data-href="https://www.facebook.com/Sotterpothemohajatra"  
+       data-tabs="timeline"  
+       data-width="380"  
+       data-height="500"  
+       data-small-header="false"  
+       data-adapt-container-width="true"  
+       data-hide-cover="false"  
+       data-show-facepile="true">  
+  </div>  
+</div>  <div class="brain-icon" id="brainIcon" title="কথা বলুন">  
+  <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="AI Brain">  
+</div>  <div class="modal" id="aiModal">  
+  <div class="chat-container">  
+    <div class="chat-header">  
+      <div>🤖 MC (Mini Chat) <small style="font-size:12px;">Islamic Edition</small></div>  
+      <span class="close-btn" id="closeChat">✖</span>  
+    </div>  <div class="mode-switch">  
+  <button class="local-btn active" id="localMode">🧠 Local Brain</button>  
+  <button class="powerful-btn" id="powerfulMode">🌐 Web AI</button>  
+</div>  
+
+<div class="chat-body" id="chatBody">  
+  <div class="message ai-msg">আসসালামু আলাইকুম ওয়া রাহমাতুল্লাহ! 🌹<br>আমি MC। ইসলামের আলো ও সত্যের পথে আপনাকে স্বাগতম। বলুন কিভাবে সাহায্য করতে পারি?</div>  
+</div>  
+
+<div class="chat-footer" id="chatFooter">  
+  <input type="text" id="chatInput" placeholder="আপনার প্রশ্ন লিখুন..." autocomplete="off" />  
+  <button id="sendBtn">➤</button>  
+</div>
+
+  </div>  
+</div>  <div id="fb-root"></div>  
+<script async defer crossorigin="anonymous"  
+        src="https://connect.facebook.net/bn_IN/sdk.js#xfbml=1&version=v17.0"></script>  <script>  
+// --- Variables ---  
+const brainIcon = document.getElementById('brainIcon');  
+const aiModal = document.getElementById('aiModal');  
+const closeChat = document.getElementById('closeChat');  
+const chatBody = document.getElementById('chatBody');  
+const chatInput = document.getElementById('chatInput');  
+const sendBtn = document.getElementById('sendBtn');  
+const localBtn = document.getElementById('localMode');  
+const powerfulBtn = document.getElementById('powerfulMode');  
+const chatFooter = document.getElementById('chatFooter');  
+  
+let mode = 'local';  
+  
+// --- Functions ---  
+brainIcon.onclick = () => { aiModal.style.display = 'block'; chatInput.focus(); };  
+closeChat.onclick = () => { aiModal.style.display = 'none'; };  
+  
+localBtn.onclick = () => {  
+  if(mode === 'local') return;  
+  mode = 'local';  
+  localBtn.classList.add('active');  
+  powerfulBtn.classList.remove('active');  
+  chatFooter.style.display = 'flex';  
+  chatBody.innerHTML = '';  
+  addAiMessage('আসসালামু আলাইকুম! Local Mode চালু হয়েছে। 🌹');  
+};  
+  
+powerfulBtn.onclick = () => {  
+  if(mode === 'powerful') return;  
+  mode = 'powerful';  
+  powerfulBtn.classList.add('active');  
+  localBtn.classList.remove('active');  
+  chatFooter.style.display = 'none';  
+  chatBody.innerHTML = '<iframe src="https://ab2835569-web.github.io/MC_ChatBotPro"></iframe>';  
+};  
+  
+function addUserMessage(text) {  
+  const div = document.createElement('div');  
+  div.className = 'message user-msg';  
+  div.innerText = text;  
+  chatBody.appendChild(div);  
+  scrollToBottom();  
+}  
+  
+function addAiMessage(text) {  
+  const div = document.createElement('div');  
+  div.className = 'message ai-msg';  
+  div.innerHTML = text;   
+  chatBody.appendChild(div);  
+  scrollToBottom();  
+}  
+  
+function showTyping() {  
+  const div = document.createElement('div');  
+  div.className = 'message ai-msg typing';  
+  div.id = 'typingIndicator';  
+  div.innerText = 'লিখছে...';  
+  chatBody.appendChild(div);  
+  scrollToBottom();  
+}  
+  
+function removeTyping() {  
+  const typing = document.getElementById('typingIndicator');  
+  if(typing) typing.remove();  
+}  
+  
+function scrollToBottom() {  
+  chatBody.scrollTop = chatBody.scrollHeight;  
+}  
+  
+// --- Intelligent Logic (Expanded for Islam & Truth) ---  
+const knowledgeBase = [  
+  // Greetings & Basics  
+  {   
+    keywords: ['hello', 'hi', 'hey', 'হ্যালো', 'হাই'],   
+    response: "আসসালামু আলাইকুম।! হ্যালো, কেমন আছেন আপনি? 😊"   
+  },  
+  {   
+    keywords: ['assalamu', 'salam', 'আসসালামু', 'সালাম'],   
+    response: "ওয়ালাইকুম আসসালাম ওয়া রাহমাতুল্লাহি ওয়া বারাকাতুহু। আল্লাহ আপনার ওপর শান্তি বর্ষণ করুন।"   
+  },  
+  {   
+    keywords: ['kemon', 'kmn', 'obostha', 'খবর', 'কেমন', 'কি অবস্থা'],   
+    response: "আলহামদুলিল্লাহ! আমি ভালো আছি। আপনার দিনকাল কেমন কাটছে?"   
+  },  
+  {   
+    keywords: ['name', 'porichoy', 'নাম', 'পরিচয়', 'কে আপনি'],   
+    response: "আমি MC (Mini Chat)। সত্যের পথে মহাযাত্রা পেজের ডিজিটাল অ্যাসিস্ট্যান্ট।"   
+  },  
+  {   
+    keywords: ['creator', 'made', 'owner', 'মালিক', 'বানিয়েছে'],   
+    response: "আমাকে তৈরি করেছেন Abir।"   
+  },  
+    
+  // Islamic Knowledge  
+  {  
+    keywords: ['allah', 'god', 'khoda', 'আল্লাহ', 'খোদা', 'রব', 'সৃষ্টিকর্তা'],  
+    response: "আল্লাহ সুবহানাহু ওয়া তাআলা এক ও অদ্বিতীয়। তিনি আমাদের সৃষ্টিকর্তা এবং রিজিকদাতা।"  
+  },  
+  {  
+    keywords: ['muhammad', 'nabi', 'prophet', 'রাসূল', 'নবী', 'মুহাম্মদ'],  
+    response: "হযরত মুহাম্মদ (সা.) হলেন সর্বশ্রেষ্ঠ ও সর্বশেষ নবী। তাঁর আদর্শেই আমাদের মুক্তি।"  
+  },  
+  {  
+    keywords: ['quran', 'book', 'কোরআন', 'কিতাব'],  
+    response: "আল-কোরআন হলো মানবজাতির জন্য পূর্ণাঙ্গ জীবনবিধান এবং মহান আল্লাহর বাণী।"  
+  },  
+  {  
+    keywords: ['namaj', 'salat', 'prayer', 'নামাজ', 'সালাত'],  
+    response: "নামাজ বেহেশতের চাবি। দৈনিক ৫ ওয়াক্ত নামাজ আদায় করা প্রত্যেক মুসলিমের ওপর ফরজ।"  
+  },  
+  {  
+    keywords: ['jannat', 'heaven', 'জান্নাত', 'বেহেশত'],  
+    response: "জান্নাত হলো মুমিনদের চিরস্থায়ী সুখের ঠিকানা। নেক আমল ও আল্লাহর সন্তুষ্টির মাধ্যমেই তা পাওয়া সম্ভব।"  
+  },  
+  {  
+    keywords: ['shanti', 'peace', 'শান্তি', 'মন ভালো নেই'],  
+    response: "প্রকৃত শান্তি কেবল আল্লাহর স্মরণের মধ্যেই রয়েছে। বেশি বেশি ইস্তেগফার পড়ুন, মন শান্ত হবে ইনশাআল্লাহ।"  
+  },  
+    
+  // Truth & Wisdom (Theme Related)  
+  {  
+    keywords: ['shotto', 'truth', 'সত্য'],  
+    response: "সত্যের পথ কঠিন হতে পারে, কিন্তু এর শেষটা সবসময় সুন্দর এবং বিজয়ের। সত্য মুক্তি দেয়।"  
+  },  
+  {  
+    keywords: ['mitha', 'lie', 'মিথ্যা'],  
+    response: "মিথ্যা ধ্বংস ডেকে আনে। রাসূল (সা.) বলেছেন, মিথ্যা সব পাপের জননী।"  
+  },  
+  {  
+    keywords: ['dua', 'doa', 'দোয়া'],  
+    response: "দোয়া হলো মুমিনের হাতিয়ার। আল্লাহর কাছে যা চাইবেন, তিনি তাই দিতে পারেন।"  
+  },  
+  
+  // General Utils  
+  {  
+    keywords: ['bye', 'allah hafez', 'biday', 'বিদায়', 'আল্লাহ হাফেজ'],   
+    response: "ফি আমানিল্লাহ (আল্লাহর জিম্মায়)। ভালো থাকবেন, আবার কথা হবে।"   
+  },  
+  {  
+     keywords: ['time', 'date', 'সময়', 'তারিখ', 'কয়টা বাজে'],  
+     response: "এখন সময় হলো: " + new Date().toLocaleTimeString('bn-BD')  
+  }  
+];  
+  
+function getSmartReply(input) {  
+  const lowerInput = input.toLowerCase();  
+    
+  for (let item of knowledgeBase) {  
+    for (let key of item.keywords) {  
+      if (lowerInput.includes(key)) {  
+        return item.response;  
+      }  
+    }  
+  }  
+    
+  // Default Replies (Polite & Islamic tone)  
+  const defaults = [  
+    "দুঃখিত, আমি ঠিক বুঝতে পারিনি। তবে আল্লাহ সব জানেন। আরেকবার বলবেন?",  
+    "মাশাআল্লাহ! আপনার কথা শুনে ভালো লাগল.।",  
+    "আমি এখনো শিখছি। ইনশাআল্লাহ ভবিষ্যতে আরও ভালো উত্তর দিতে পারব।",  
+    "সুবহানাল্লাহ! বিষয়টি খুবই চমৎকার।"  
+  ];  
+  return defaults[Math.floor(Math.random() * defaults.length)];  
+}  
+  
+// Handle Send  
+sendBtn.onclick = () => {  
+  const msg = chatInput.value.trim();  
+  if(!msg) return;  
+  
+  if(mode === 'local') {  
+    addUserMessage(msg);  
+    chatInput.value = '';  
+      
+    showTyping();  
+    setTimeout(() => {  
+      removeTyping();  
+      const reply = getSmartReply(msg);  
+      addAiMessage(reply);  
+    }, 800);  
+  }  
+};  
+  
+chatInput.addEventListener('keypress', function(e){  
+  if(e.key === 'Enter'){ sendBtn.click(); }  
+});  
+  
+</script>  </body>  
+</html>
